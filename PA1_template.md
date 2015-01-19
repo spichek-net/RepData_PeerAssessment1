@@ -21,6 +21,8 @@ data <- read.csv(unz("activity.zip", "activity.csv"),sep=",",na.strings = "NA",n
 
 ## What is mean total number of steps taken per day?
 
+Calculation and chart:
+
 
 ```r
 by_day <- data %>%
@@ -32,7 +34,8 @@ hist(by_day$total_steps,breaks=10,xlab="Steps each day", main="Number of steps t
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
-As can be seen, mostlikely number of steps to be made is beween 10000 an 12000 
+As can be seen, most likely number of steps to be made is beween 10000 an 12000 
+
 
 ```r
 avg_by_day <- mean(by_day$total_steps)
