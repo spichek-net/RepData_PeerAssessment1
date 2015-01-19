@@ -215,7 +215,7 @@ median_by_day &lt;- median(by_day$total_steps)
 
 <ul>
 <li>Average number of steps per day is 9354.2295</li>
-<li>Mean number of steps per day is 10395</li>
+<li>Median number of steps per day is 10395</li>
 </ul>
 
 <h2>What is the average daily activity pattern?</h2>
@@ -256,7 +256,9 @@ time_string = paste(floor(interval_with_max_avg/100),&quot;:&quot;,interval_with
 
 <p>Calculation of number of stems per day with imputed data:</p>
 
-<pre><code class="r">by_day_imputed &lt;- summarize(group_by(imputed,date),total_steps=sum(steps))
+<pre><code class="r">by_day_imputed &lt;- imputed %&gt;%
+  group_by(date) %&gt;%
+  summarize(total_steps=sum(steps))
 
 hist(by_day_imputed$total_steps,breaks=10,xlab=&quot;Steps each day&quot;, main=&quot;Number(imputed) of steps taken each day&quot;)
 </code></pre>
@@ -274,7 +276,7 @@ median_by_day_imputed &lt;- median(by_day_imputed$total_steps)
 
 <ul>
 <li>Average number of steps per day is 1.0766 &times; 10<sup>4</sup></li>
-<li>Mean number of steps per day is 1.0762 &times; 10<sup>4</sup></li>
+<li>Median number of steps per day is 1.0762 &times; 10<sup>4</sup></li>
 </ul>
 
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
@@ -290,7 +292,7 @@ median_by_day_imputed &lt;- median(by_day_imputed$total_steps)
 weekend_factored &lt;- mutate(imputed,day_type=is_a_weekend(date))
 </code></pre>
 
-<p>Based on that facto we plt workday data on top of weekend data</p>
+<p>Based on that factor we can plot workday data on top of weekend data</p>
 
 <pre><code class="r">by5min_and_day_type &lt;- weekend_factored %&gt;%
   group_by(interval,day_type) %&gt;%

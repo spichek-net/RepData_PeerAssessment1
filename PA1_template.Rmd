@@ -83,7 +83,9 @@ imputed <- data %>%
 Calculation of number of stems per day with imputed data:
 
 ```{r}
-by_day_imputed <- summarize(group_by(imputed,date),total_steps=sum(steps))
+by_day_imputed <- imputed %>%
+  group_by(date) %>%
+  summarize(total_steps=sum(steps))
 
 hist(by_day_imputed$total_steps,breaks=10,xlab="Steps each day", main="Number(imputed) of steps taken each day")
 ```

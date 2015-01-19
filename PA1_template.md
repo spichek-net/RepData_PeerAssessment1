@@ -44,7 +44,7 @@ median_by_day <- median(by_day$total_steps)
 
 Precisely:
 * Average number of steps per day is 9354.2295
-* Mean number of steps per day is 10395
+* Median number of steps per day is 10395
 
 ## What is the average daily activity pattern?
 
@@ -94,7 +94,9 @@ Calculation of number of stems per day with imputed data:
 
 
 ```r
-by_day_imputed <- summarize(group_by(imputed,date),total_steps=sum(steps))
+by_day_imputed <- imputed %>%
+  group_by(date) %>%
+  summarize(total_steps=sum(steps))
 
 hist(by_day_imputed$total_steps,breaks=10,xlab="Steps each day", main="Number(imputed) of steps taken each day")
 ```
@@ -112,7 +114,7 @@ median_by_day_imputed <- median(by_day_imputed$total_steps)
 
 Precisely:
 * Average number of steps per day is 1.0766 &times; 10<sup>4</sup>
-* Mean number of steps per day is 1.0762 &times; 10<sup>4</sup>
+* Median number of steps per day is 1.0762 &times; 10<sup>4</sup>
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
@@ -129,7 +131,7 @@ is_a_weekend <- function(date_str) {
 weekend_factored <- mutate(imputed,day_type=is_a_weekend(date))
 ```
 
-Based on that facto we plt workday data on top of weekend data
+Based on that factor we can plot workday data on top of weekend data
 
 
 ```r
