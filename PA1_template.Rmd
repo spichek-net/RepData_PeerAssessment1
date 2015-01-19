@@ -128,7 +128,7 @@ xyplot(avg_steps ~ interval | day_type, data = by5min_and_day_type, type="l",lay
 
 As can be seen
 
-1. Workdays have pronounced peak around 8-9am whene everybody goes to work
-2. Around 6am substantially more steps are made on workdays than on weekends. I.e. people stay in bed longer on weekends.
+1. Workdays have pronounced peak around 8-9am when everybody goes to work
+2. Around 6am substantially more steps are made on workdays than on weekends. I.e. people stay in bed longer on weekends
 3. In the middle of the day people work more on weekends than on workdays
 
